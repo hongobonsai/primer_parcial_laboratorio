@@ -50,6 +50,7 @@ int main(void) {
 					LEN_CENSISTAS);
 			break;
 		case 6:
+			finalizarZona(zonas, censistas, LEN_ZONAS, LEN_CENSISTAS);
 			break;
 		case 7: //censistas
 			for (int i = 0; i < LEN_CENSISTAS; i++) {

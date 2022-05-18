@@ -140,3 +140,15 @@ if (list != NULL && len > 0) {
 }
 return retorno;
 }
+int isZonaPendiente(Zona *list, int len, int idZona) {
+int retorno = -1;
+if (list != NULL && len > 0 && idZona > 0) {
+	for (int i = 0; i < len; i++) {
+		if (list[i].idZona == idZona && list[i].isEmpty == 0 && list[i].estado == PENDIENTE) {
+			retorno = i;
+			break;
+		}
+	}
+}
+return retorno;
+}
