@@ -38,8 +38,6 @@ int altaCensista(Censista list[], int lenStruct, int lenPalabra) {
 
 		printf("\n-CARGA DE DATOS-\n");
 
-		auxId = calcularId();
-
 		if (getEspaciosYLetras(auxNombre, lenPalabra,
 				"\nIntroduzca el nombre del censista: ",
 				"\n-Ingrese un nombre valido-\n", 5) == 0
@@ -89,6 +87,7 @@ int altaCensista(Censista list[], int lenStruct, int lenPalabra) {
 						if (list != NULL && lenStruct > 0) {
 							indiceVacio = findEmptySpace(list, lenStruct);
 							if (indiceVacio != -1) {
+								auxId = calcularId();
 								list[indiceVacio].id = auxId;
 								strncpy(list[indiceVacio].nombre, auxNombre,
 										sizeof(list[indiceVacio].nombre));
@@ -104,9 +103,9 @@ int altaCensista(Censista list[], int lenStruct, int lenPalabra) {
 										sizeof(list[indiceVacio].direccion.calle));
 								list[indiceVacio].direccion.altura = auxAltura;
 								list[indiceVacio].isEmpty = 0; //ESCRIBE EL EMPTY
-								list[indiceVacio].estado = 1; //ESCRIBE ESTADO LIBERADO
-								printf(
-										"\n-El censista ya se encuentra liberado-\n");
+								list[indiceVacio].estado = LIBERADO; //ESCRIBE ESTADO LIBERADO
+								list[indiceVacio].idZona = 0;
+								printf("\n-El cencista se cargo con estado: LIBERADO.-\n");
 								printf(
 										"\n+SE REALIZO LA CARGA CORRECTAMENTE+\n");
 								retorno = 0;
@@ -374,7 +373,7 @@ int modificarCensista(Censista list[], int lenStruct, int lenPalabra) {
 	return retorno;
 }
 
-int bajaCencista(Censista list[], int len) {
+int bajaCensista(Censista list[], int len) {
 	int retorno = -1;
 	int auxId;
 	int indiceEncontrado;
@@ -433,6 +432,20 @@ int findCensistaById(Censista *list, int len, int id) {
 	if (list != NULL && len > 0 && id > 0) {
 		for (int i = 0; i < len; i++) {
 			if (list[i].id == id && list[i].isEmpty == 0) {
+				retorno = i;
+				break;
+			}
+		}
+	}
+	return retorno;
+}
+
+int findCensistaLiberado(Censista list[], int len) {
+	int retorno = -1;
+	if (list != NULL && len > 0) {
+		for (int i = 0; i < len; i++) {
+			if (list[i].estado == 3 && list[i].isEmpty == 0) {
+
 				retorno = i;
 				break;
 			}

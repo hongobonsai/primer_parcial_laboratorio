@@ -17,5 +17,6 @@
 
 int menuPrincipal();
 int calcularId();
+int calcularIdZona();
 
 #endif /* TP_2_LIBRARY_H_ */

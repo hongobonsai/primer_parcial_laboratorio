@@ -14,7 +14,7 @@
 #include "tp_2_library.h"
 
 #define LEN_CENSISTAS 5
-#define LEN_NOM_APELL 21
+#define LEN_NOM_APELL 51
 #define ACTIVO 1
 #define INACTIVO 2
 #define LIBERADO 3
@@ -53,7 +53,8 @@ int altaCensista(Censista list[], int lenStruct, int lenPalabra);
 int isThereAnyCensista(Censista *list, int len);
 int findCensistaById(Censista *list, int len, int id);
 int modificarCensista(Censista list[], int lenStruct, int lenPalabra);
-int bajaCencista(Censista list[], int len);
+int bajaCensista(Censista list[], int len);
+int findCensistaLiberado(Censista list[], int len);
 
 #endif /* ARRAYCENCISTAS_H_ */
 

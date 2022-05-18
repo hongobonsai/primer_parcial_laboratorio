@@ -16,7 +16,7 @@ int menuPrincipal() {
 	printf("\n2. Modificar censista.");
 	printf("\n3. Dar de baja censista.");
 	printf("\n4. Cargar zona.");
-	printf("\n5. Asignar zona a censar: se asigna un censista responsable a la zona.");
+	printf("\n5. Asignar zona a censar.");
 	printf("\n6. Carga de datos.");
 	printf("\n7. Mostrar censistas.");
 	printf("\n8. Mostrar zonas.\n");
@@ -35,6 +35,13 @@ int menuPrincipal() {
 int calcularId() {
 
 	static int id = 2999;
+	id++;
+	return id;
+}
+
+int calcularIdZona() {
+
+	static int id = 999;
 	id++;
 	return id;
 }
