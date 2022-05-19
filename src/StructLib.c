@@ -1,5 +1,12 @@
 #include "StructLib.h"
-
+/** \brief Asigna el primer censista encontrado al id de zona
+*
+* \param list Censista*
+* * \param list Zona*
+* \param len int
+* \param id int
+* \return
+*/
 int asignarCensistaResponsable(Zona *zonas, Censista *censistas, int lenZona,
 		int lenCen) {
 
@@ -48,7 +55,14 @@ int asignarCensistaResponsable(Zona *zonas, Censista *censistas, int lenZona,
 	}
 	return retorno;
 }
-
+/** \brief Finaliza una zona, pone como finalizado su estado, carga censados.
+*
+* \param list Censista*
+* * \param list Zona*
+* \param len int
+* \param id int
+* \return
+*/
 int finalizarZona(Zona *zonas, Censista *cencistas, int lenZona, int lenCen) {
 	int retorno = -1;
 	int auxIdZona;
@@ -129,7 +143,14 @@ int finalizarZona(Zona *zonas, Censista *cencistas, int lenZona, int lenCen) {
 	}
 	return retorno;
 }
-
+/** \brief Encuentra el indice de un censista comparandolo con el id de una zona
+*
+* \param list Censista*
+* * \param list Zona*
+* \param len int
+* \param id int
+* \return
+*/
 int findCensistaByZona(Censista *cencistas, int lenCen, int idZona) {
 	int retorno = -1;
 	for (int i = 0; i < lenCen; i++) {
@@ -140,7 +161,14 @@ int findCensistaByZona(Censista *cencistas, int lenCen, int idZona) {
 	}
 	return retorno;
 }
-
+/** \brief Imprime todas las zonas, sus datos, quien los censa.
+*
+* \param list Censista*
+* * \param list Zona*
+* \param len int
+* \param id int
+* \return
+*/
 int printZonas(Zona zonas[], Censista *cencistas, int lenZonas,
 		int lenCencistas, char arrayLocalidades[][26], int lenLocalidades) {
 

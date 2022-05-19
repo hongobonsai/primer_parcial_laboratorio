@@ -1,12 +1,12 @@
 #include "ArrayCensistas.h"
 
 /** \brief Para indicar que todas las posiciones en la matriz están vacías,
- * esta función pone la bandera (isEmpty) en VERDADERO en todas las posiciones de la estructura
- *
- * \param list Passenger* Puntero a la estructura
- * \param len Largo del array
- * \return int Devuelve (-1) si hay error [longitud no válida o puntero NULL] - (0) si está bien
- */
+* esta función pone la bandera (isEmpty) en VERDADERO en todas las posiciones de la estructura
+*
+* \param list Cencista* Puntero a la estructura
+* \param len Largo del array
+* \return int Devuelve (-1) si hay error [longitud no válida o puntero NULL] - (0) si está bien
+*/
 int initCensistas(Censista list[], int len) {
 	int retorno = -1;
 	if (list != NULL && len > 0) {
@@ -17,7 +17,13 @@ int initCensistas(Censista list[], int len) {
 	}
 	return retorno;
 }
-
+/** \brief agrega en una lista existente de censistas los valores obtenidos
+*
+* \param list Censista*
+* \param len int
+* \return int Retorna (-1) si hay algun Error [Longitud inválida, puntero NULL o sin
+espacio libre] - (0) si está bien.
+*/
 int altaCensista(Censista list[], int lenStruct, int lenPalabra) {
 
 	int reintento = 5;
@@ -142,7 +148,15 @@ int altaCensista(Censista list[], int lenStruct, int lenPalabra) {
 	//printf("%d\n %s\n %s\n %d\n %d\n %d\n %d\n %s\n %d\n", auxId, auxNombre, auxApellido, auxEdad, auxDia, auxMes, auxAnio, auxCalle, auxAltura);
 	return retorno;
 }
-
+/** \brief Modifica a un censista por ID (pone la flag IsEmpty en 1)
+*
+* \param list Censista*
+* \param len int
+* \param id int
+* \return Devuelve (-1) si hay un error [Longitud no válida, puntero NULL o si no se puede
+encontrar un censista] - (0) si está bien
+*
+*/
 int modificarCensista(Censista list[], int lenStruct, int lenPalabra) {
 
 	int retorno = -1;
@@ -373,7 +387,15 @@ int modificarCensista(Censista list[], int lenStruct, int lenPalabra) {
 
 	return retorno;
 }
-
+/** \brief Elimina a un censista por ID (pone la flag IsEmpty en 1)
+*
+* \param list Censista*
+* \param len int
+* \param id int
+* \return Devuelve (-1) si hay un error [Longitud no válida, puntero NULL o si no se puede
+encontrar un censista] - (0) si está bien
+*
+*/
 int bajaCensista(Censista list[], int len) {
 	int retorno = -1;
 	int auxId;
@@ -403,7 +425,12 @@ int bajaCensista(Censista list[], int len) {
 	}
 	return retorno;
 }
-
+/** \brief Encuentra un espacio vacio en la estructura censistas (espacio vacio = IsEmpty 1).
+*
+* \param list Censista*
+* \param len int
+* \return Retorna el lugar disponible (indice)
+*/
 int findEmptySpace(Censista list[], int len) {
 	int retorno = -1;
 	if (list != NULL && len > 0) {
@@ -417,7 +444,12 @@ int findEmptySpace(Censista list[], int len) {
 	}
 	return retorno;
 }
-
+/** \brief Busca si hay algo cargado en nuestra estructura de censistas.
+*
+* \param list Censista*
+* \param len int
+* \return Retorna 0 si encuentra algun lugar disponible.
+*/
 int isThereAnyCensista(Censista *list, int len) { //IS THERE ANYBODY... OUT - THERE
 	int retorno = -1;
 	for (int i = 0; i < len; i++) {
@@ -428,7 +460,15 @@ int isThereAnyCensista(Censista *list, int len) { //IS THERE ANYBODY... OUT - TH
 	}
 	return retorno;
 }
-
+/** \brief encuentra un censista en la estructura recibiendo su ID
+* devuelve la posición del índice en la matriz.
+*
+* \param list Censista*
+* \param len int
+* \param id int
+* \return Retorna la posición del índice de censistas o (-1) si [Longitud o
+Puntero NULL recibido o censista no encontrado]
+*/
 int findCensistaById(Censista *list, int len, int id) {
 	int retorno = -1;
 	if (list != NULL && len > 0 && id > 0) {
@@ -441,7 +481,15 @@ int findCensistaById(Censista *list, int len, int id) {
 	}
 	return retorno;
 }
-
+/** \brief encuentra un censista liberado en la estructura recibiendo su ID
+* devuelve la posición del índice en la matriz.
+*
+* \param list Censista*
+* \param len int
+* \param id int
+* \return Retorna la posición del índice de censistas o (-1) si [Longitud o
+Puntero NULL recibido o censista no encontrado]
+*/
 int findCensistaLiberado(Censista list[], int len) {
 	int retorno = -1;
 	if (list != NULL && len > 0) {
@@ -455,7 +503,13 @@ int findCensistaLiberado(Censista list[], int len) {
 	}
 	return retorno;
 }
-
+/** \brief Imprime la lista de censistas
+*
+* \param list Censista*
+* \param len int
+* \param id int
+* \return
+*/
 int printCensistas(Censista list[], int len) {
 	int retorno = -1;
 	int estadoIteracion;
@@ -507,7 +561,13 @@ int printCensistas(Censista list[], int len) {
 	return retorno;
 }
 
-
+/** \brief Harcodea cinco valores a censistas
+*
+* \param list Censista*
+* \param len int
+* \param id int
+* \return
+*/
 void hardCodeCensista(Censista list[]) {
 
 	printf("\nSe pisaran los datos\n");

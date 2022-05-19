@@ -1,5 +1,12 @@
 #include "ArrayZonas.h"
-
+/** \brief Para indicar que todas las posiciones en la matriz están vacías,
+* esta función pone la bandera (isEmpty) en VERDADERO en todas las posiciones de la estructura
+* posición de la matriz
+*
+* \param list Zona* Puntero a la estructura
+* \param len Largo del array
+* \return int Devuelve (-1) si hay error [longitud no válida o puntero NULL] - (0) si está bien
+*/
 int initZona(Zona list[], int len) {
 	int retorno = -1;
 	if (list != NULL && len > 0) {
@@ -10,7 +17,13 @@ int initZona(Zona list[], int len) {
 	}
 	return retorno;
 }
-
+/** \brief Completa los valores de una zona en la estructura
+*
+* \param list Zona*
+* \param len int
+* \return int Retorna (-1) si hay algun Error [Longitud inválida, puntero NULL o sin
+espacio libre] - (0) si está bien.
+*/
 int altaZona(Zona list[], int lenStruct, int lenPalabra) {
 
 	int retorno;
@@ -89,7 +102,12 @@ int altaZona(Zona list[], int lenStruct, int lenPalabra) {
 	}
 return retorno;
 }
-
+/** \brief Encuentra un espacio vacio en la estructura zonas (espacio vacio = IsEmpty 1).
+*
+* \param list Zona*
+* \param len int
+* \return Retorna el lugar disponible (indice)
+*/
 int findEmptyZona(Zona list[], int len) {
 	int retorno = -1;
 	if (list != NULL && len > 0) {
@@ -103,7 +121,12 @@ int findEmptyZona(Zona list[], int len) {
 	}
 	return retorno;
 }
-
+/** \brief Busca si hay algo cargado en nuestra estructura de zonas.
+*
+* \param list Zona*
+* \param len int
+* \return Retorna 0 si encuentra algun lugar disponible.
+*/
 int isThereAnyZona(Zona *list, int len) { //IS THERE ANYBODY... OUT - THERE
 	int retorno = -1;
 	for (int i = 0; i < len; i++) {
@@ -114,7 +137,15 @@ int isThereAnyZona(Zona *list, int len) { //IS THERE ANYBODY... OUT - THERE
 	}
 	return retorno;
 }
-
+/** \brief encuentra un censista en la estructura recibiendo su ID
+* devuelve la posición del índice en la matriz.
+*
+* \param list Zona*
+* \param len int
+* \param id int
+* \return Retorna la posición del índice de zonas o (-1) si [Longitud o
+Puntero NULL recibido o zona no encontrado]
+*/
 int findZonaById(Zona *list, int len, int idZona) {
 	int retorno = -1;
 	if (list != NULL && len > 0 && idZona > 0) {
@@ -127,7 +158,14 @@ int findZonaById(Zona *list, int len, int idZona) {
 	}
 	return retorno;
 }
-
+/** \brief encuentra una zona pendiente recibiendo su ID
+*
+* \param list Zona*
+* \param len int
+* \param id int
+* \return Retorna la posición del índice de zonas o (-1) si [Longitud o
+Puntero NULL recibido o censizonasta no encontrado]
+*/
 int findZonaPendiente(Zona list[], int len) {
 	int retorno = -1;
 	if (list != NULL && len > 0) {
@@ -140,6 +178,15 @@ int findZonaPendiente(Zona list[], int len) {
 	}
 	return retorno;
 }
+/** \brief Verifica si hay una zona pendiente recibiendo su ID
+ *
+*
+* \param list Zona*
+* \param len int
+* \param id int
+* \return Retorna la posición del índice de zonas o (-1) si [Longitud o
+Puntero NULL recibido o censizonasta no encontrado]
+*/
 int isZonaPendiente(Zona *list, int len, int idZona) {
 	int retorno = -1;
 	if (list != NULL && len > 0 && idZona > 0) {
@@ -153,7 +200,13 @@ int isZonaPendiente(Zona *list, int len, int idZona) {
 	}
 	return retorno;
 }
-
+/** \brief Harcodea cinco valores a zonas
+*
+* \param list Zona*
+* \param len int
+* \param id int
+* \return
+*/
 void hardCodeZona(Zona list[]) {
 
 	printf("\nSe pisaran los datos\n");
