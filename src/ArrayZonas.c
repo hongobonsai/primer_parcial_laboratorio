@@ -11,7 +11,7 @@ int initZona(Zona list[], int len) {
 	return retorno;
 }
 
-int altaZona(Zona list[], int lenStruct, int lenPalabra) {
+int altaZona(Zona list[], int lenStruct, int lenPalabra, int lenLocalidades) {
 
 	int retorno;
 	int indiceVacio;
@@ -36,7 +36,7 @@ int altaZona(Zona list[], int lenStruct, int lenPalabra) {
 							"\n-Ingrese un nombre valido-\n", 5) == 0) {
 
 						if (utn_getNumero(&auxLocalidad, "\nIngrese a que localidad corresponde la zona",
-											"\nIngrese un dato valido", 1, 31, 5) == 0) {
+											"\nIngrese un dato valido", 1, lenLocalidades, 5) == 0) {
 
 							if (list != NULL && lenStruct > 0) {
 								indiceVacio = findEmptyZona(list, lenStruct);
@@ -48,9 +48,9 @@ int altaZona(Zona list[], int lenStruct, int lenPalabra) {
 										strncpy(list[indiceVacio].calles[2], auxCalles[2], sizeof(list[indiceVacio].calles[2]));
 										strncpy(list[indiceVacio].calles[3], auxCalles[3], sizeof(list[indiceVacio].calles[3]));
 										list[indiceVacio].localidad = auxLocalidad;
-										list[indiceVacio].cantidadInSitu = 0;
-										list[indiceVacio].cantidadInSitu = 0;
-										list[indiceVacio].ausentes = 0;
+										list[indiceVacio].censados.cantidadInSitu = 0;
+										list[indiceVacio].censados.cantidadInSitu = 0;
+										list[indiceVacio].censados.cantidadAusentes = 0;
 										list[indiceVacio].isEmpty = 0;
 										list[indiceVacio].estado = PENDIENTE;
 										list[indiceVacio].idCensistaAsignado = 0;

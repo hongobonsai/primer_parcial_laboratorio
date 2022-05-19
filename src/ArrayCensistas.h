@@ -55,6 +55,7 @@ int findCensistaById(Censista *list, int len, int id);
 int modificarCensista(Censista list[], int lenStruct, int lenPalabra);
 int bajaCensista(Censista list[], int len);
 int findCensistaLiberado(Censista list[], int len);
+int printCensistas(Censista list[], int len);
 
 #endif /* ARRAYCENCISTAS_H_ */
 

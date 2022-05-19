@@ -105,7 +105,8 @@ int altaCensista(Censista list[], int lenStruct, int lenPalabra) {
 								list[indiceVacio].isEmpty = 0; //ESCRIBE EL EMPTY
 								list[indiceVacio].estado = LIBERADO; //ESCRIBE ESTADO LIBERADO
 								list[indiceVacio].idZona = 0;
-								printf("\n-El cencista se cargo con estado: LIBERADO.-\n");
+								printf(
+										"\n-El cencista se cargo con estado: LIBERADO.-\n");
 								printf(
 										"\n+SE REALIZO LA CARGA CORRECTAMENTE+\n");
 								retorno = 0;
@@ -449,6 +450,51 @@ int findCensistaLiberado(Censista list[], int len) {
 				retorno = i;
 				break;
 			}
+		}
+	}
+	return retorno;
+}
+
+int printCensistas(Censista list[], int len) {
+	int retorno = -1;
+	int estadoIteracion;
+	char arrayEstados[3][26] = { "ACTIVO", "INACTIVO", "LIBERADO" };
+
+	if (list != NULL && len > 0) {
+
+		printf(
+				"\n+--------------------------------------------------------------------------------------------------------------------------------+"
+						"\n|  ID  |      NOMBRE      |     APELLIDO     | ZONA ACTUAL |  ESTADO  | EDAD | FECHA DE NACIMIENTO |         CALLE         | ALTURA |"
+						"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+");
+		for (int i = 0; i < len; i++) {
+			if (list[i].isEmpty == 0) {
+				estadoIteracion = list[i].estado;
+				estadoIteracion--;
+
+				if (list[i].idZona != 0) {
+					printf(
+							"\n| %-4d | %-17s| %-17s| %-11d | %-8s |  %-2d  |     %-2d/%-2d/%-4d      |%-23s| %-5d  |"
+									"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+",
+							list[i].id, list[i].nombre, list[i].apellido,
+							list[i].idZona, arrayEstados[estadoIteracion],
+							list[i].edad, list[i].fechaNacimiento.dia,
+							list[i].fechaNacimiento.mes,
+							list[i].fechaNacimiento.anio,
+							list[i].direccion.calle, list[i].direccion.altura);
+				} else if (list[i].idZona == 0) {
+					printf(
+							"\n| %-4d | %-17s| %-17s| NO ASIGNADA | %-8s |  %-2d  |     %-2d/%-2d/%-4d      |%-23s| %-5d  |"
+									"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+",
+							list[i].id, list[i].nombre, list[i].apellido,
+							arrayEstados[estadoIteracion], list[i].edad,
+							list[i].fechaNacimiento.dia,
+							list[i].fechaNacimiento.mes,
+							list[i].fechaNacimiento.anio,
+							list[i].direccion.calle, list[i].direccion.altura);
+				}
+
+			}
+
 		}
 	}
 	return retorno;

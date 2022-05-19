@@ -15,12 +15,14 @@
 //#define LIBERADO 3
 
 #define LEN_CALLES 20
+#define CANT_LOCALIDADES 10
 
 int main(void) {
 	setbuf(stdout, NULL);
 
 	int opcionMenu;
-	//char prueba[LEN_NOM_APELL] = {"mensajito"};
+	char arrayLocalidades[CANT_LOCALIDADES][26] = {"AVELLANEDA", "BARRACAS", "LA BOCA", "SAN TELMO", "SANTOS LUGARES",
+			"CASEROS", "PALOMAR", "SAN MARTIN", "HUERLINGHAM", "BELLA VISTA"};
 	Censista censistas[LEN_CENSISTAS];
 	Zona zonas[LEN_ZONAS];
 
@@ -43,7 +45,7 @@ int main(void) {
 			bajaCensista(censistas, LEN_CENSISTAS);
 			break;
 		case 4:
-			altaZona(zonas, LEN_ZONAS, LEN_NOM_APELL);
+			altaZona(zonas, LEN_ZONAS, LEN_NOM_APELL, CANT_LOCALIDADES);
 			break;
 		case 5:
 			asignarCensistaResponsable(zonas, censistas, LEN_ZONAS,
@@ -53,6 +55,7 @@ int main(void) {
 			finalizarZona(zonas, censistas, LEN_ZONAS, LEN_CENSISTAS);
 			break;
 		case 7: //censistas
+			printCensistas(censistas, LEN_CENSISTAS);
 			for (int i = 0; i < LEN_CENSISTAS; i++) {
 				if (censistas[i].isEmpty == 0) {
 					printf("\nNOMBRE: %s"
@@ -86,10 +89,15 @@ int main(void) {
 							"\nCALLE 1: %s"
 							"\nCALLE 2: %s"
 							"\nCALLE 3: %s"
-							"\nCALLE 4: %s\n", zonas[i].idZona, zonas[i].idCensistaAsignado,
+							"\nCALLE 4: %s\n"
+							"\nVirtual: %d"
+							"\nIn situ: %d"
+							"\nAusentes: %d", zonas[i].idZona, zonas[i].idCensistaAsignado,
 							zonas[i].localidad, zonas[i].estado,
 							zonas[i].calles[0], zonas[i].calles[1],
-							zonas[i].calles[2], zonas[i].calles[3]);
+							zonas[i].calles[2], zonas[i].calles[3],
+							zonas[i].censados.cantidadVirtual, zonas[i].censados.cantidadInSitu,
+							zonas[i].censados.cantidadAusentes);
 				}
 			}
 			break;

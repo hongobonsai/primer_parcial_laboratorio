@@ -20,5 +20,6 @@
 int asignarCensistaResponsable(Zona *zonas, Censista *cencistas, int lenZona, int lenCen);
 int findCensistaByZona(Censista *cencistas, int lenCen, int idZona);
 int finalizarZona(Zona *zonas, Censista *cencistas, int lenZona, int lenCen);
+int printZonas(Zona zonas[], Censista *cencistas, int lenZonas, int lenCencistas, char arrayLocalidades[][26], int lenLocalidades);
 
 #endif /* STRUCTLIB_H_ */

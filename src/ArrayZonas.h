@@ -13,15 +13,21 @@
 
 struct {
 
+	int cantidadInSitu;
+	int cantidadVirtual;
+	int cantidadAusentes;
+
+}typedef Censado;
+
+struct {
+
 	int isEmpty;
 	int idZona;
 	int idCensistaAsignado;
 	int localidad;
 	int estado;
 	char calles[4][51];
-	int cantidadInSitu;
-	int cantidadVirtual;
-	int ausentes;
+	Censado censados;
 
 }typedef Zona;
 
@@ -29,11 +35,12 @@ struct {
 #define ARRAYZONAS_H_
 
 int initZona(Zona list[], int len);
-int altaZona(Zona list[], int lenStruct, int lenPalabra);
+int altaZona(Zona list[], int lenStruct, int lenPalabra, int lenLocalidades);
 int findEmptyZona(Zona list[], int len);
 int isThereAnyZona(Zona *list, int len);
 int findZonaById(Zona *list, int len, int idZona);
 int findZonaPendiente(Zona list[], int len);
 int isZonaPendiente(Zona *list, int len, int idZona);
+int printZonas(Zona list[], int len, char arrayLocalidades[][26], int lenLocalidades);
 
 #endif /* ARRAYZONAS_H_ */
