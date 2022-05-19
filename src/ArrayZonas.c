@@ -153,3 +153,81 @@ int isZonaPendiente(Zona *list, int len, int idZona) {
 	}
 	return retorno;
 }
+
+void hardCodeZona(Zona list[]) {
+
+	printf("\nSe pisaran los datos\n");
+
+	//
+
+	list[0].isEmpty = 0;
+	list[0].estado = PENDIENTE;
+	list[0].idZona = calcularIdZona();
+	strncpy(list[0].calles[0], "Brandsen", sizeof(list[0].calles[0]));
+	strncpy(list[0].calles[1], "Suarez", sizeof(list[0].calles[1]));
+	strncpy(list[0].calles[2], "Martin Garcia", sizeof(list[0].calles[2]));
+	strncpy(list[0].calles[3], "Montes de Oca", sizeof(list[0].calles[3]));
+	list[0].localidad = 2;
+	list[0].censados.cantidadInSitu = 0;
+	list[0].censados.cantidadVirtual = 0;
+	list[0].censados.cantidadAusentes = 0;
+
+	//
+
+	list[1].isEmpty = 0;
+	list[1].estado = PENDIENTE;
+	list[1].idZona = calcularIdZona();
+	strncpy(list[1].calles[0], "California", sizeof(list[1].calles[0]));
+	strncpy(list[1].calles[1], "Iriarte", sizeof(list[1].calles[1]));
+	strncpy(list[1].calles[2], "Mexico", sizeof(list[1].calles[2]));
+	strncpy(list[1].calles[3], "Australia", sizeof(list[1].calles[3]));
+	list[1].localidad = 5;
+	list[1].censados.cantidadInSitu = 0;
+	list[1].censados.cantidadVirtual = 0;
+	list[1].censados.cantidadAusentes = 0;
+
+	//
+
+	list[2].isEmpty = 0;
+	list[2].estado = PENDIENTE;
+	list[2].idZona = calcularIdZona();
+	strncpy(list[2].calles[0], "Gral Victoria", sizeof(list[2].calles[0]));
+	strncpy(list[2].calles[1], "Pte Kennedy", sizeof(list[2].calles[1]));
+	strncpy(list[2].calles[2], "Bergamini", sizeof(list[2].calles[2]));
+	strncpy(list[2].calles[3], "Mengues", sizeof(list[2].calles[3]));
+	list[2].localidad = 7;
+	list[2].censados.cantidadInSitu = 0;
+	list[2].censados.cantidadVirtual = 0;
+	list[2].censados.cantidadAusentes = 0;
+
+	//
+
+	list[3].isEmpty = 0;
+	list[3].estado = PENDIENTE;
+	list[3].idZona = calcularIdZona();
+	strncpy(list[3].calles[0], "Irusta", sizeof(list[3].calles[0]));
+	strncpy(list[3].calles[1], "Flaubert", sizeof(list[3].calles[1]));
+	strncpy(list[3].calles[2], "Pedro Diaz", sizeof(list[3].calles[2]));
+	strncpy(list[3].calles[3], "Gorriti", sizeof(list[3].calles[3]));
+	list[3].localidad = 10;
+	list[3].censados.cantidadInSitu = 0;
+	list[3].censados.cantidadVirtual = 0;
+	list[3].censados.cantidadAusentes = 0;
+
+	//
+
+	list[4].isEmpty = 0;
+	list[4].estado = PENDIENTE;
+	list[4].idZona = calcularIdZona();
+	strncpy(list[4].calles[0], "Brandsen", sizeof(list[4].calles[0]));
+	strncpy(list[4].calles[1], "Suarez", sizeof(list[4].calles[1]));
+	strncpy(list[4].calles[2], "CalleGarcia", sizeof(list[4].calles[2]));
+	strncpy(list[4].calles[3], "Montes de Oca", sizeof(list[4].calles[3]));
+	list[4].localidad = 2;
+	list[4].censados.cantidadInSitu = 0;
+	list[4].censados.cantidadVirtual = 0;
+	list[4].censados.cantidadAusentes = 0;
+
+}
+
+

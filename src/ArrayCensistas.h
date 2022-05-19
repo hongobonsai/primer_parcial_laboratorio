@@ -10,8 +10,8 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "LocalLibrary.h"
 #include "Utn.h"
-#include "tp_2_library.h"
 
 #define LEN_CENSISTAS 5
 #define LEN_NOM_APELL 51
@@ -56,6 +56,7 @@ int modificarCensista(Censista list[], int lenStruct, int lenPalabra);
 int bajaCensista(Censista list[], int len);
 int findCensistaLiberado(Censista list[], int len);
 int printCensistas(Censista list[], int len);
+void hardCodeCensista(Censista list[]);
 
 #endif /* ARRAYCENCISTAS_H_ */
 

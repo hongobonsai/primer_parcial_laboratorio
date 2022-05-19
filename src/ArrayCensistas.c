@@ -506,3 +506,83 @@ int printCensistas(Censista list[], int len) {
 	}
 	return retorno;
 }
+
+
+void hardCodeCensista(Censista list[]) {
+
+	printf("\nSe pisaran los datos\n");
+
+	list[0].id = calcularId();
+	strncpy(list[0].nombre, "Jose", sizeof(list[0].nombre));
+	strncpy(list[0].apellido, "Garcia", sizeof(list[0].nombre));
+	list[0].edad = 38;
+	list[0].estado = LIBERADO;
+	list[0].isEmpty = 0;
+	list[0].fechaNacimiento.dia = 27;
+	list[0].fechaNacimiento.mes = 2;
+	list[0].fechaNacimiento.anio = 1982;
+	strncpy(list[0].direccion.calle, "Avenida de pozos",
+			sizeof(list[0].direccion.calle));
+	list[0].direccion.altura = 1777;
+
+//
+
+	list[1].id = calcularId();
+	strncpy(list[1].nombre, "Maria Jose", sizeof(list[1].nombre));
+	strncpy(list[1].apellido, "Rodriguez Damico", sizeof(list[1].nombre));
+	list[1].edad = 49;
+	list[1].estado = LIBERADO;
+	list[1].isEmpty = 0;
+	list[1].fechaNacimiento.dia = 10;
+	list[1].fechaNacimiento.mes = 9;
+	list[1].fechaNacimiento.anio = 1973;
+	strncpy(list[1].direccion.calle, "Avenida DelPalo",
+			sizeof(list[1].direccion.calle));
+	list[1].direccion.altura = 500;
+
+//
+
+	list[2].id = calcularId();
+	strncpy(list[2].nombre, "Rigoberto", sizeof(list[2].nombre));
+	strncpy(list[2].apellido, "Schneider", sizeof(list[2].nombre));
+	list[2].edad = 24;
+	list[2].estado = LIBERADO;
+	list[2].isEmpty = 0;
+	list[2].fechaNacimiento.dia = 13;
+	list[2].fechaNacimiento.mes = 1;
+	list[2].fechaNacimiento.anio = 2000;
+	strncpy(list[2].direccion.calle, "Grande Maradona",
+			sizeof(list[2].direccion.calle));
+	list[2].direccion.altura = 987;
+
+//
+
+	list[3].id = calcularId();
+	strncpy(list[3].nombre, "Javier", sizeof(list[3].nombre));
+	strncpy(list[3].apellido, "Generico", sizeof(list[3].nombre));
+	list[3].edad = 35;
+	list[3].estado = LIBERADO;
+	list[3].isEmpty = 0;
+	list[3].fechaNacimiento.dia = 3;
+	list[3].fechaNacimiento.mes = 7;
+	list[3].fechaNacimiento.anio = 1989;
+	strncpy(list[3].direccion.calle, "Regimiento Patricios",
+			sizeof(list[3].direccion.calle));
+	list[3].direccion.altura = 1286;
+
+//
+
+	list[4].id = calcularId();
+	strncpy(list[4].nombre, "Juan Sebastian", sizeof(list[4].nombre));
+	strncpy(list[4].apellido, "Alonso", sizeof(list[4].nombre));
+	list[4].edad = 27;
+	list[4].estado = LIBERADO;
+	list[4].isEmpty = 0;
+	list[4].fechaNacimiento.dia = 10;
+	list[4].fechaNacimiento.mes = 9;
+	list[4].fechaNacimiento.anio = 1993;
+	strncpy(list[4].direccion.calle, "Montes de Oca",
+			sizeof(list[4].direccion.calle));
+	list[4].direccion.altura = 1700;
+
+}

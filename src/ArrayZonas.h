@@ -3,8 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "LocalLibrary.h"
 #include "Utn.h"
-#include "tp_2_library.h"
 
 #define LEN_ZONAS 10
 #define LEN_NOM_APELL 51
@@ -42,5 +42,6 @@ int isThereAnyZona(Zona *list, int len);
 int findZonaById(Zona *list, int len, int idZona);
 int findZonaPendiente(Zona list[], int len);
 int isZonaPendiente(Zona *list, int len, int idZona);
+void hardCodeZona(Zona list[]);
 
 #endif /* ARRAYZONAS_H_ */
