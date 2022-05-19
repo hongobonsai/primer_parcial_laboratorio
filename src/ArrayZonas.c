@@ -11,7 +11,7 @@ int initZona(Zona list[], int len) {
 	return retorno;
 }
 
-int altaZona(Zona list[], int lenStruct, int lenPalabra, int lenLocalidades) {
+int altaZona(Zona list[], int lenStruct, int lenPalabra) {
 
 	int retorno;
 	int indiceVacio;
@@ -36,7 +36,7 @@ int altaZona(Zona list[], int lenStruct, int lenPalabra, int lenLocalidades) {
 							"\n-Ingrese un nombre valido-\n", 5) == 0) {
 
 						if (utn_getNumero(&auxLocalidad, "\nIngrese a que localidad corresponde la zona",
-											"\nIngrese un dato valido", 1, lenLocalidades, 5) == 0) {
+											"\nIngrese un dato valido", 1, 26, 5) == 0) {
 
 							if (list != NULL && lenStruct > 0) {
 								indiceVacio = findEmptyZona(list, lenStruct);
@@ -48,7 +48,7 @@ int altaZona(Zona list[], int lenStruct, int lenPalabra, int lenLocalidades) {
 										strncpy(list[indiceVacio].calles[2], auxCalles[2], sizeof(list[indiceVacio].calles[2]));
 										strncpy(list[indiceVacio].calles[3], auxCalles[3], sizeof(list[indiceVacio].calles[3]));
 										list[indiceVacio].localidad = auxLocalidad;
-										list[indiceVacio].censados.cantidadInSitu = 0;
+										list[indiceVacio].censados.cantidadVirtual = 0;
 										list[indiceVacio].censados.cantidadInSitu = 0;
 										list[indiceVacio].censados.cantidadAusentes = 0;
 										list[indiceVacio].isEmpty = 0;
@@ -91,64 +91,65 @@ return retorno;
 }
 
 int findEmptyZona(Zona list[], int len) {
-int retorno = -1;
-if (list != NULL && len > 0) {
-	for (int i = 0; i < len; i++) {
-		if (list[i].isEmpty == 1) {
+	int retorno = -1;
+	if (list != NULL && len > 0) {
+		for (int i = 0; i < len; i++) {
+			if (list[i].isEmpty == 1) {
 
-			retorno = i;
-			break;
+				retorno = i;
+				break;
+			}
 		}
 	}
-}
-return retorno;
+	return retorno;
 }
 
 int isThereAnyZona(Zona *list, int len) { //IS THERE ANYBODY... OUT - THERE
-int retorno = -1;
-for (int i = 0; i < len; i++) {
-	if (list[i].isEmpty == 0) {
-		retorno = 0;
-		break;
+	int retorno = -1;
+	for (int i = 0; i < len; i++) {
+		if (list[i].isEmpty == 0) {
+			retorno = 0;
+			break;
+		}
 	}
-}
-return retorno;
+	return retorno;
 }
 
 int findZonaById(Zona *list, int len, int idZona) {
-int retorno = -1;
-if (list != NULL && len > 0 && idZona > 0) {
-	for (int i = 0; i < len; i++) {
-		if (list[i].idZona == idZona && list[i].isEmpty == 0) {
-			retorno = i;
-			break;
+	int retorno = -1;
+	if (list != NULL && len > 0 && idZona > 0) {
+		for (int i = 0; i < len; i++) {
+			if (list[i].idZona == idZona && list[i].isEmpty == 0) {
+				retorno = i;
+				break;
+			}
 		}
 	}
-}
-return retorno;
+	return retorno;
 }
 
 int findZonaPendiente(Zona list[], int len) {
-int retorno = -1;
-if (list != NULL && len > 0) {
-	for (int i = 0; i < len; i++) {
-		if (list[i].estado == 1 && list[i].isEmpty == 1) {
-			retorno = i;
-			break;
+	int retorno = -1;
+	if (list != NULL && len > 0) {
+		for (int i = 0; i < len; i++) {
+			if (list[i].estado == 1 && list[i].isEmpty == 0) {
+				retorno = i;
+				break;
+			}
 		}
 	}
-}
-return retorno;
+	return retorno;
 }
 int isZonaPendiente(Zona *list, int len, int idZona) {
-int retorno = -1;
-if (list != NULL && len > 0 && idZona > 0) {
-	for (int i = 0; i < len; i++) {
-		if (list[i].idZona == idZona && list[i].isEmpty == 0 && list[i].estado == PENDIENTE) {
-			retorno = i;
-			break;
+	int retorno = -1;
+	if (list != NULL && len > 0 && idZona > 0) {
+		for (int i = 0; i < len; i++) {
+			if (list[i].idZona
+					== idZona&& list[i].isEmpty == 0 && list[i].estado == PENDIENTE) {
+				retorno = i;
+				break;
+			}
 		}
 	}
-}
-return retorno;
+	return retorno;
 }

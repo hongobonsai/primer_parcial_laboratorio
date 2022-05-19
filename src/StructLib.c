@@ -1,6 +1,6 @@
 #include "StructLib.h"
 
-int asignarCensistaResponsable(Zona *zonas, Censista *cencistas, int lenZona,
+int asignarCensistaResponsable(Zona *zonas, Censista *censistas, int lenZona,
 		int lenCen) {
 
 	int retorno = -1;
@@ -8,23 +8,23 @@ int asignarCensistaResponsable(Zona *zonas, Censista *cencistas, int lenZona,
 	int indiceZona;
 	int indiceLiberado;
 
-	if ((indiceLiberado = findCensistaLiberado(cencistas, lenCen)) != -1) {
+	if ((indiceLiberado = findCensistaLiberado(censistas, lenCen)) != -1) {
 		if (findZonaPendiente(zonas, lenZona) != -1) {
 			if (utn_getNumero(&auxIdZona,
 					"\nIngrese el ID de la zona a censar: ",
 					"\n-Ingrese un dato valido-", 1000, 5999, 5) == 0) {
 				if ((indiceZona = findZonaById(zonas, lenZona, auxIdZona))
 						!= -1) {
-					if (findCensistaByZona(cencistas, lenCen, auxIdZona)
+					if (findCensistaByZona(censistas, lenCen, auxIdZona)
 							== -1) {
-						cencistas[indiceLiberado].idZona = auxIdZona;
+						censistas[indiceLiberado].idZona = auxIdZona;
 						zonas[indiceZona].idCensistaAsignado =
-								cencistas[indiceLiberado].id;
+								censistas[indiceLiberado].id;
 						;
-						cencistas[indiceLiberado].estado = ACTIVO;
+						censistas[indiceLiberado].estado = ACTIVO;
 						printf("\n-La zona sera censada por: %s %s-\n",
-								cencistas[indiceLiberado].nombre,
-								cencistas[indiceLiberado].apellido);
+								censistas[indiceLiberado].nombre,
+								censistas[indiceLiberado].apellido);
 						printf("\n+LA ZONA FUE ASIGNADA CORRRECTAMENTE+\n");
 						retorno = 0;
 
@@ -141,25 +141,80 @@ int findCensistaByZona(Censista *cencistas, int lenCen, int idZona) {
 	return retorno;
 }
 
-int printZonas(Zona zonas[], Censista *cencistas, int lenZonas, int lenCencistas, char arrayLocalidades[][26], int lenLocalidades){
+int printZonas(Zona zonas[], Censista *cencistas, int lenZonas,
+		int lenCencistas, char arrayLocalidades[][26], int lenLocalidades) {
 
-//id
-//cencista asign
-//localidad
-//estado
-//calles
+	int localidadIteracion;
+	int estadoIteracion;
+	int indiceCencista;
+	char arrayEstados[2][26] = { "PENDIENTE", "FINALIZADO" };
 
+	if (zonas != NULL && cencistas != NULL && lenZonas > 0
+			&& lenCencistas > 0) {
+		if (isThereAnyZona(zonas, lenZonas) != -1) {
 
+			printf(
+					"\n+--------------------------------------------------------------------------------------------------------------------------+"
+							"\n| ID ZONA |          CENCISTA ASIGNADO          |      LOCALIDAD      |         CALLES        |   ESTADO   |   CENSADOS    |"
+							"\n+---------+-------------------------------------+---------------------+-----------------------+------------+---------------+");
 
+			for (int i = 0; i < lenZonas; i++) {
+				if (zonas[i].isEmpty == 0) {
+					localidadIteracion = zonas[i].localidad;
+					localidadIteracion--;
+					estadoIteracion = zonas[i].estado;
+					estadoIteracion--;
 
+					if (findCensistaById(cencistas, lenCencistas,
+							zonas[i].idCensistaAsignado) != -1) {
+						indiceCencista = findCensistaById(cencistas,
+								lenCencistas, zonas[i].idCensistaAsignado);
 
+						printf(
+								"\n| %-4d    | %17s %-17s | %-19s | %-21s | %-10s | VIRTUAL: %-3d  |"
+										"\n|         |                                     |                     | %-21s |            | IN SITU: %-3d  |\n"
+										"|         |                                     |                     | %-21s |            | AUSENTES: %-3d |\n"
+										"|         |                                     |                     | %-21s |            |               |\n"
+										"+---------+-------------------------------------+---------------------+-----------------------+------------+---------------+\n",
+								zonas[i].idZona,
+								cencistas[indiceCencista].nombre,
+								cencistas[indiceCencista].apellido,
+								arrayLocalidades[localidadIteracion],
+								zonas[i].calles[0],
+								arrayEstados[estadoIteracion],
+								zonas[i].censados.cantidadVirtual,
+								zonas[i].calles[1],
+								zonas[i].censados.cantidadInSitu,
+								zonas[i].calles[2],
+								zonas[i].censados.cantidadAusentes,
+								zonas[i].calles[3]);
+					} else {
+						printf(
+								"\n| %-4d    |  NO SE ASIGNO UN CENSISTA A LA ZONA | %-19s | %-21s | %-10s | VIRTUAL: %-3d  |"
+										"\n|         |                                     |                     | %-21s |            | IN SITU: %-3d  |\n"
+										"|         |                                     |                     | %-21s |            | AUSENTES: %-3d |\n"
+										"|         |                                     |                     | %-21s |            |               |\n"
+										"+---------+-------------------------------------+---------------------+-----------------------+------------+---------------+\n",
+								zonas[i].idZona,
+								arrayLocalidades[localidadIteracion],
+								zonas[i].calles[0],
+								arrayEstados[estadoIteracion],
+								zonas[i].censados.cantidadVirtual,
+								zonas[i].calles[1],
+								zonas[i].censados.cantidadInSitu,
+								zonas[i].calles[2],
+								zonas[i].censados.cantidadAusentes,
+								zonas[i].calles[3]);
 
-return 0;
+					}
+
+				}
+			}
+		}else {
+			printf("\n-NO SE CARGÓ NINGUNA ZONA/NO HAY ZONAS PENDIENTES-\n");
+		}
+
+	}
+	return 0;
 }
-
-
-
-
-
-
 

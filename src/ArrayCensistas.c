@@ -385,6 +385,7 @@ int bajaCensista(Censista list[], int len) {
 					!= -1) {
 				if (list[indiceEncontrado].estado != ACTIVO) {
 					list[indiceEncontrado].estado = INACTIVO;
+					printf("+LA BAJA DEL FUE REALIZADA CON EXITO+");
 				} else {
 					printf(
 							"\n-¡NO SE PUEDE DAR DE BAJA A UN CENCISTA ACTIVO!-\n");
@@ -461,40 +462,46 @@ int printCensistas(Censista list[], int len) {
 	char arrayEstados[3][26] = { "ACTIVO", "INACTIVO", "LIBERADO" };
 
 	if (list != NULL && len > 0) {
+		if (isThereAnyCensista(list, LEN_CENSISTAS) != -1) {
 
-		printf(
-				"\n+--------------------------------------------------------------------------------------------------------------------------------+"
-						"\n|  ID  |      NOMBRE      |     APELLIDO     | ZONA ACTUAL |  ESTADO  | EDAD | FECHA DE NACIMIENTO |         CALLE         | ALTURA |"
-						"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+");
-		for (int i = 0; i < len; i++) {
-			if (list[i].isEmpty == 0) {
-				estadoIteracion = list[i].estado;
-				estadoIteracion--;
+			printf(
+					"\n+-----------------------------------------------------------------------------------------------------------------------------------+"
+							"\n|  ID  |      NOMBRE      |     APELLIDO     | ZONA ACTUAL |  ESTADO  | EDAD | FECHA DE NACIMIENTO |         CALLE         | ALTURA |"
+							"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+");
+			for (int i = 0; i < len; i++) {
+				if (list[i].isEmpty == 0) {
+					estadoIteracion = list[i].estado;
+					estadoIteracion--;
 
-				if (list[i].idZona != 0) {
-					printf(
-							"\n| %-4d | %-17s| %-17s| %-11d | %-8s |  %-2d  |     %-2d/%-2d/%-4d      |%-23s| %-5d  |"
-									"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+",
-							list[i].id, list[i].nombre, list[i].apellido,
-							list[i].idZona, arrayEstados[estadoIteracion],
-							list[i].edad, list[i].fechaNacimiento.dia,
-							list[i].fechaNacimiento.mes,
-							list[i].fechaNacimiento.anio,
-							list[i].direccion.calle, list[i].direccion.altura);
-				} else if (list[i].idZona == 0) {
-					printf(
-							"\n| %-4d | %-17s| %-17s| NO ASIGNADA | %-8s |  %-2d  |     %-2d/%-2d/%-4d      |%-23s| %-5d  |"
-									"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+",
-							list[i].id, list[i].nombre, list[i].apellido,
-							arrayEstados[estadoIteracion], list[i].edad,
-							list[i].fechaNacimiento.dia,
-							list[i].fechaNacimiento.mes,
-							list[i].fechaNacimiento.anio,
-							list[i].direccion.calle, list[i].direccion.altura);
+					if (list[i].idZona != 0) {
+						printf(
+								"\n| %-4d | %-17s| %-17s| %-11d | %-8s |  %-2d  |     %-2d/%-2d/%-4d      |%-23s| %-5d  |"
+										"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+",
+								list[i].id, list[i].nombre, list[i].apellido,
+								list[i].idZona, arrayEstados[estadoIteracion],
+								list[i].edad, list[i].fechaNacimiento.dia,
+								list[i].fechaNacimiento.mes,
+								list[i].fechaNacimiento.anio,
+								list[i].direccion.calle,
+								list[i].direccion.altura);
+					} else if (list[i].idZona == 0) {
+						printf(
+								"\n| %-4d | %-17s| %-17s| NO ASIGNADA | %-8s |  %-2d  |     %-2d/%-2d/%-4d      |%-23s| %-5d  |"
+										"\n+------+------------------+------------------+-------------+----------+------+---------------------+-----------------------+--------+",
+								list[i].id, list[i].nombre, list[i].apellido,
+								arrayEstados[estadoIteracion], list[i].edad,
+								list[i].fechaNacimiento.dia,
+								list[i].fechaNacimiento.mes,
+								list[i].fechaNacimiento.anio,
+								list[i].direccion.calle,
+								list[i].direccion.altura);
+					}
+
 				}
 
 			}
-
+		} else {
+			printf("\n-NO SE CARGÓ NINGUN CENSISTA-\n");
 		}
 	}
 	return retorno;

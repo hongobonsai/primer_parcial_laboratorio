@@ -19,10 +19,10 @@
 
 int main(void) {
 	setbuf(stdout, NULL);
-
 	int opcionMenu;
 	char arrayLocalidades[CANT_LOCALIDADES][26] = {"AVELLANEDA", "BARRACAS", "LA BOCA", "SAN TELMO", "SANTOS LUGARES",
 			"CASEROS", "PALOMAR", "SAN MARTIN", "HUERLINGHAM", "BELLA VISTA"};
+
 	Censista censistas[LEN_CENSISTAS];
 	Zona zonas[LEN_ZONAS];
 
@@ -45,41 +45,20 @@ int main(void) {
 			bajaCensista(censistas, LEN_CENSISTAS);
 			break;
 		case 4:
-			altaZona(zonas, LEN_ZONAS, LEN_NOM_APELL, CANT_LOCALIDADES);
+			altaZona(zonas, LEN_ZONAS, LEN_NOM_APELL);
 			break;
 		case 5:
-			asignarCensistaResponsable(zonas, censistas, LEN_ZONAS,
-					LEN_CENSISTAS);
+			asignarCensistaResponsable(zonas, censistas, LEN_ZONAS, LEN_CENSISTAS);
 			break;
 		case 6:
 			finalizarZona(zonas, censistas, LEN_ZONAS, LEN_CENSISTAS);
 			break;
 		case 7: //censistas
 			printCensistas(censistas, LEN_CENSISTAS);
-			for (int i = 0; i < LEN_CENSISTAS; i++) {
-				if (censistas[i].isEmpty == 0) {
-					printf("\nNOMBRE: %s"
-							"\nAPELLIDO: %s"
-							"\nID: %d"
-							"\nEDAD: %d"
-							"\nDIA: %d"
-							"\nMES: %d"
-							"\nAÑO: %d"
-							"\nCALLE: %s"
-							"\nALTURA: %d"
-							"\nZONA ACTIVA: %d"
-							"\nESTADO: %d\n", censistas[i].nombre,
-							censistas[i].apellido, censistas[i].id,
-							censistas[i].edad, censistas[i].fechaNacimiento.dia,
-							censistas[i].fechaNacimiento.mes,
-							censistas[i].fechaNacimiento.anio,
-							censistas[i].direccion.calle,
-							censistas[i].direccion.altura, censistas[i].idZona, censistas[i].estado);
-				}
-			}
-			break;
 			break;
 		case 8: //zonas
+			printZonas(zonas, censistas, LEN_ZONAS, LEN_CENSISTAS, arrayLocalidades, CANT_LOCALIDADES);
+
 			for (int i = 0; i < LEN_ZONAS; i++) {
 				if (zonas[i].isEmpty == 0) {
 					printf("\nID ZONA: %d"
@@ -96,7 +75,7 @@ int main(void) {
 							zonas[i].localidad, zonas[i].estado,
 							zonas[i].calles[0], zonas[i].calles[1],
 							zonas[i].calles[2], zonas[i].calles[3],
-							zonas[i].censados.cantidadVirtual, zonas[i].censados.cantidadInSitu,
+							zonas[i].censados.cantidadInSitu, zonas[i].censados.cantidadVirtual,
 							zonas[i].censados.cantidadAusentes);
 				}
 			}
