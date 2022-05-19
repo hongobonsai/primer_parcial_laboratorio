@@ -20,9 +20,9 @@ int menuPrincipal() {
 	printf("\n5. Asignar zona a censar.");
 	printf("\n6. Carga de datos.");
 	printf("\n7. Mostrar censistas.");
-	printf("\n8. Mostrar zonas.\n\n");
-	printf("\n9. Hardcode 5 Cencistas.\n");
-	printf("\n10. Hardcode 5 Zonas.\n");
+	printf("\n8. Mostrar zonas.\n");
+	printf("\n9. Hardcode 5 Cencistas.");
+	printf("\n10. Hardcode 5 Zonas.");
 	printf("\n11. Informes.\n");
 	printf("\n0. EXIT\n");
 

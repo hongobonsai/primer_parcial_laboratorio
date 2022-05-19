@@ -111,6 +111,7 @@ int altaCensista(Censista list[], int lenStruct, int lenPalabra) {
 								list[indiceVacio].isEmpty = 0; //ESCRIBE EL EMPTY
 								list[indiceVacio].estado = LIBERADO; //ESCRIBE ESTADO LIBERADO
 								list[indiceVacio].idZona = 0;
+								list[indiceVacio].promedioCensados = 0;
 								printf(
 										"\n-El cencista se cargo con estado: LIBERADO.-\n");
 								printf(
@@ -584,6 +585,7 @@ void hardCodeCensista(Censista list[]) {
 	strncpy(list[0].direccion.calle, "Avenida de pozos",
 			sizeof(list[0].direccion.calle));
 	list[0].direccion.altura = 1777;
+	list[0].promedioCensados = 0;
 
 //
 
@@ -599,6 +601,7 @@ void hardCodeCensista(Censista list[]) {
 	strncpy(list[1].direccion.calle, "Avenida DelPalo",
 			sizeof(list[1].direccion.calle));
 	list[1].direccion.altura = 500;
+	list[1].promedioCensados = 0;
 
 //
 
@@ -614,6 +617,7 @@ void hardCodeCensista(Censista list[]) {
 	strncpy(list[2].direccion.calle, "Grande Maradona",
 			sizeof(list[2].direccion.calle));
 	list[2].direccion.altura = 987;
+	list[2].promedioCensados = 0;
 
 //
 
@@ -629,6 +633,7 @@ void hardCodeCensista(Censista list[]) {
 	strncpy(list[3].direccion.calle, "Regimiento Patricios",
 			sizeof(list[3].direccion.calle));
 	list[3].direccion.altura = 1286;
+	list[3].promedioCensados = 0;
 
 //
 
@@ -644,5 +649,6 @@ void hardCodeCensista(Censista list[]) {
 	strncpy(list[4].direccion.calle, "Montes de Oca",
 			sizeof(list[4].direccion.calle));
 	list[4].direccion.altura = 1700;
+	list[4].promedioCensados = 0;
 
 }

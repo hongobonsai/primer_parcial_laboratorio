@@ -6,7 +6,7 @@
 #include "LocalLibrary.h"
 #include "Utn.h"
 
-#define LEN_ZONAS 10
+#define LEN_ZONAS 20
 #define LEN_NOM_APELL 51
 #define PENDIENTE 1
 #define FINALIZADO 2
@@ -17,6 +17,7 @@ struct {
 	int cantidadInSitu;
 	int cantidadVirtual;
 	int cantidadAusentes;
+	int promedio;
 
 }typedef Censado;
 

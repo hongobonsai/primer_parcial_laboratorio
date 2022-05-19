@@ -1,12 +1,12 @@
 #include "StructLib.h"
 /** \brief Asigna el primer censista encontrado al id de zona
-*
-* \param list Censista*
-* * \param list Zona*
-* \param len int
-* \param id int
-* \return
-*/
+ *
+ * \param list Censista*
+ * * \param list Zona*
+ * \param len int
+ * \param id int
+ * \return
+ */
 int asignarCensistaResponsable(Zona *zonas, Censista *censistas, int lenZona,
 		int lenCen) {
 
@@ -56,13 +56,13 @@ int asignarCensistaResponsable(Zona *zonas, Censista *censistas, int lenZona,
 	return retorno;
 }
 /** \brief Finaliza una zona, pone como finalizado su estado, carga censados.
-*
-* \param list Censista*
-* * \param list Zona*
-* \param len int
-* \param id int
-* \return
-*/
+ *
+ * \param list Censista*
+ * * \param list Zona*
+ * \param len int
+ * \param id int
+ * \return
+ */
 int finalizarZona(Zona *zonas, Censista *cencistas, int lenZona, int lenCen) {
 	int retorno = -1;
 	int auxIdZona;
@@ -144,13 +144,13 @@ int finalizarZona(Zona *zonas, Censista *cencistas, int lenZona, int lenCen) {
 	return retorno;
 }
 /** \brief Encuentra el indice de un censista comparandolo con el id de una zona
-*
-* \param list Censista*
-* * \param list Zona*
-* \param len int
-* \param id int
-* \return
-*/
+ *
+ * \param list Censista*
+ * * \param list Zona*
+ * \param len int
+ * \param id int
+ * \return
+ */
 int findCensistaByZona(Censista *cencistas, int lenCen, int idZona) {
 	int retorno = -1;
 	for (int i = 0; i < lenCen; i++) {
@@ -161,14 +161,24 @@ int findCensistaByZona(Censista *cencistas, int lenCen, int idZona) {
 	}
 	return retorno;
 }
+int findCensistaByZonaDos(Censista *cencistas, int lenCen, int idZona) {
+	int retorno = -1;
+		for (int i = 0; i < lenCen; i++) {
+			if (cencistas[i].idZona == idZona) {
+				retorno = i;
+				break;
+			}
+		}
+		return retorno;
+	}
 /** \brief Imprime todas las zonas, sus datos, quien los censa.
-*
-* \param list Censista*
-* * \param list Zona*
-* \param len int
-* \param id int
-* \return
-*/
+ *
+ * \param list Censista*
+ * * \param list Zona*
+ * \param len int
+ * \param id int
+ * \return
+ */
 int printZonas(Zona zonas[], Censista *cencistas, int lenZonas,
 		int lenCencistas, char arrayLocalidades[][26], int lenLocalidades) {
 
@@ -238,11 +248,116 @@ int printZonas(Zona zonas[], Censista *cencistas, int lenZonas,
 
 				}
 			}
-		}else {
+		} else {
 			printf("\n-NO SE CARGÓ NINGUNA ZONA/NO HAY ZONAS PENDIENTES-\n");
 		}
 
 	}
 	return 0;
 }
+
+int activoZonaPendiente(Zona *zonas, Censista *censistas, int lenZona,
+		int lenCen) {
+
+	int auxIdZona;
+	int auxIndiceZona;
+	int contadorDeCensistas = 0;
+	for (int i = 0; i < lenCen; i++) {
+
+		if (censistas[i].estado == ACTIVO) {
+
+			auxIdZona = censistas[i].idZona;
+			auxIndiceZona = findZonaById(zonas, lenZona, auxIdZona);
+
+			if (zonas[auxIndiceZona].estado == PENDIENTE) {
+				contadorDeCensistas++;
+			}
+
+		}
+
+	}
+	printf("\nCantidad de censistas ACTIVOS cuya zona está PENDIENTE: %d\n",
+			contadorDeCensistas);
+
+	return 0;
+}
+
+int localidadMasCasasAusentes(Zona *zonas, int lenZona, char arrayLocalidades[][26]) {
+
+//	 {"AVELLANEDA", "BARRACAS", "LA BOCA", "SAN TELMO", "SANTOS LUGARES",
+//				"CASEROS", "PALOMAR", "SAN MARTIN", "HURLINGHAM", "BELLA VISTA"};
+
+	int aux = 0;
+	int mayorLoca;
+	int estaOrdenado;
+	int i = 0;
+
+	do{
+
+		if (zonas[i].isEmpty == 0 && zonas[i].estado == FINALIZADO) {
+
+			aux = zonas[i].censados.cantidadAusentes;
+			if (zonas[i].censados.cantidadAusentes > aux){
+				estaOrdenado = 0;
+				aux = zonas[i].censados.cantidadAusentes;
+				mayorLoca = zonas[i].localidad;
+				mayorLoca--;
+			} else{
+				aux = zonas[i].censados.cantidadAusentes;
+				mayorLoca = zonas[i].localidad;
+				mayorLoca--;
+				break;
+			}
+
+		}
+
+		}while (estaOrdenado != 1);
+	printf("La localidad con mas ausentes es: %s", arrayLocalidades[mayorLoca]);
+	return 0;
+}
+
+
+int promedioCensosPorZona(Zona *zonas, Censista *censistas, int lenZona){
+
+	int total = 0;
+	int promedio;
+	int indiceCen;
+	int idZona;
+
+	for(int i = 0; i<lenZona; i++){
+
+		if(zonas[i].isEmpty == 0 && censistas[i].isEmpty == 0 && zonas[i].estado == FINALIZADO){
+
+		total += zonas[i].censados.cantidadInSitu;
+		total += zonas[i].censados.cantidadVirtual;
+		promedio = total / 2;
+
+		zonas[i].censados.promedio = promedio;
+		printf("\nID ZONA: %d\n"
+				"PROMEDIO: %d\n", zonas[i].idZona, zonas[i].censados.promedio);
+
+		idZona = zonas[i].idZona;
+		indiceCen = findCensistaByZonaDos(censistas, 10, idZona); //retorna -1 no se por que
+		printf("promedio %d",promedio);
+		printf("indiceCen %d",indiceCen);
+		printf("idZona %d",idZona);
+		censistas[indiceCen].promedioCensados += promedio;
+		}
+	}
+
+	for(int i = 0; i<lenZona; i++){
+
+			if(censistas[i].isEmpty == 0){
+				printf("\nID: %d\n"
+						"NOMBRE: %s\n"
+						"APELLIDO: %s\n"
+						"PROMEDIO: %d\n", censistas[i].id, censistas[i].nombre, censistas[i].apellido, censistas[i].promedioCensados);
+
+			}
+		}
+
+
+	return 0;
+}
+
 

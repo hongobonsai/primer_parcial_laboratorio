@@ -13,7 +13,7 @@
 #include "LocalLibrary.h"
 #include "Utn.h"
 
-#define LEN_CENSISTAS 5
+#define LEN_CENSISTAS 10
 #define LEN_NOM_APELL 51
 #define ACTIVO 1
 #define INACTIVO 2
@@ -35,6 +35,7 @@ struct{
 
 struct{
 
+	int promedioCensados;
 	int isEmpty;
 	int id;
 	int idZona;
