@@ -32,7 +32,7 @@ int menuPrincipal() {
 	return auxOpcionMenuPrincipal;
 }
 
-/** \brief Generador de ID autoincremental. Utiliza un valor static. Comienza en 1000
+/** \brief Generador de ID autoincremental. Utiliza un valor static. Comienza en 3000
  *
  * \return Retorna el valor del ID,
  */
@@ -42,7 +42,10 @@ int calcularId() {
 	id++;
 	return id;
 }
-
+/** \brief Generador de ID autoincremental pero para zonas. Utiliza un valor static. Comienza en 1000
+ *
+ * \return Retorna el valor del ID,
+ */
 int calcularIdZona() {
 
 	static int id = 999;
